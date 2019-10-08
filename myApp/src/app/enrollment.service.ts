@@ -8,6 +8,7 @@ import { throwError} from 'rxjs';
 })
 export class EnrollmentService {
 _url = 'http://localhost:3000/enroll';
+_urlReg = 'http://localhost:3000/userRegistration';
   constructor(private _http: HttpClient) { }
   enroll(user: User) {
     return this._http.post<any>(this._url, user)
@@ -16,4 +17,12 @@ _url = 'http://localhost:3000/enroll';
   errorHandler(error: HttpErrorResponse) {
     return throwError(error);
   }
+
+// user registration post using reactive form form builder
+
+registerUser(userData) {
+  return this._http.post<any>(this._urlReg, userData)
+  .pipe(catchError(this.errorHandler));
+}
+
 }

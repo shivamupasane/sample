@@ -12,7 +12,9 @@ export class AppComponent {
   submitted = false;
   errorMsg;
   topicHasError = true;
-  userModel = new User('Name', 'test@testMail.com', 6546546540, 'default', 'morning', {street: 'abc road', city: 'pune', state: 'MH', postalCode: 5456461}, true);
+  showTDF = true;
+  showRFB = false;
+ userModel = new User('Name', 'test@testMail.com', 6546546540, 'default', 'morning', {street: 'abc road', city: 'pune', state: 'MH', postalCode: 5456461}, true);
   constructor(private _enrollmentService: EnrollmentService) {
 
   }

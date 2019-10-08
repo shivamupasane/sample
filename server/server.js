@@ -25,6 +25,10 @@ const PORT = 3000;
      console.log(req.body);
      res.status(200).send({'message': 'data recieved'})
  })
+ app.post('/userRegistration', function(req, res) {
+    console.log(req.body);
+    res.status(200).send({'message': 'data recieved'})
+})
  app.listen(PORT, function() {
      console.log('server is running on local Host ' + PORT);
  })
