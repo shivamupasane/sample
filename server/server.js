@@ -1,6 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
+//db
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017/node-demo");
+var newSchema = new mongoose.Schema({
+    userName : String,
+    password: String,
+    confirmPassword: String,
+    email: String,
+    subscribe: Boolean
+})
+var User = mongoose.model("User", newSchema);
 
 //port
 const PORT = 3000;
@@ -27,7 +39,19 @@ const PORT = 3000;
  })
  app.post('/userRegistration', function(req, res) {
     console.log(req.body);
-    res.status(200).send({'message': 'data recieved'})
+    var obj = {userName : req.body.userName,
+        password:req.body.password,
+        confirmPassword: req.body.confirmPassword,
+        email: req.body.email,
+        subscribe: req.body.subscribe}
+    var myData = new User(obj);
+    myData.save().then(item => {
+        res.status(200).send({'message': 'saved data to database'})
+    })
+    .catch(err => {
+        res.status(400).send({'message': 'unable to save to database'})
+    });
+    
 })
  app.listen(PORT, function() {
      console.log('server is running on local Host ' + PORT);
