@@ -31,6 +31,20 @@ const PORT = 3000;
      res.send('hello from express server');
  })
 
+ //get user details 
+ app.get('/:id', (req, res) => {
+     console.log(req.params.id);
+     User.find({userName: req.params.id}).exec((err, data) => {
+         console.log('error', err);
+         console.log('data', data);
+if(err) {
+    res.status(400).send({'message': 'invalid user name'})
+} else {
+    res.send(data);
+}
+     });
+})
+
  // endpoint to which angular application will post data
 
  app.post('/enroll', function(req, res) {

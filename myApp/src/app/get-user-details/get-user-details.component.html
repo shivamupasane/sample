@@ -1,0 +1,6 @@
+<button class = "m-2 btn btn-primary" (click)="enableInput = !enableInput">enable input to get user details</button>
+<input type="text" class="form-control m-5" [disabled]="!enableInput" [(ngModel)] ="userName">
+{{userName}}
+<br>
+<button [disabled]="!enableInput" class = "btn-primary btn" (click)="fetchUserDetails()">get details</button>
+

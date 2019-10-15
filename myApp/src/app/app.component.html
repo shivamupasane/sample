@@ -79,3 +79,6 @@
 </div>
 <app-reactive *ngIf = "!showTDF && !showRFB"></app-reactive>
 <app-reactive-form-builder *ngIf = "showRFB"></app-reactive-form-builder>
+<!-- <button *ngIf = "showRFB" class="btn btn-primary" [routerLink]="['/getUserDetails']">GET USER DETAILS</button> -->
+<!-- <router-outlet></router-outlet> -->
+<app-get-user-details *ngIf = "showRFB"></app-get-user-details>
