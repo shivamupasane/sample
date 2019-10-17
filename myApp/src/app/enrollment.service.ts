@@ -10,6 +10,7 @@ export class EnrollmentService {
 _url = 'http://localhost:3000/enroll';
 _urlReg = 'http://localhost:3000/userRegistration';
 _urlGetDtl = 'http://localhost:3000/';
+userDetails;
   constructor(private _http: HttpClient) { }
   enroll(user: User) {
     return this._http.post<any>(this._url, user)

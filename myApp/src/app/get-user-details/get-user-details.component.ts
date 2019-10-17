@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EnrollmentService } from '../enrollment.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-get-user-details',
@@ -7,18 +8,10 @@ import { EnrollmentService } from '../enrollment.service';
   styleUrls: ['./get-user-details.component.scss']
 })
 export class GetUserDetailsComponent implements OnInit {
-  enableInput = false;
-  userName: String = '';
+    
   constructor(private enrollService: EnrollmentService) { }
 
   ngOnInit() {
-  }
-  fetchUserDetails() {
-this.enrollService.getUserDetails(this.userName).subscribe(data => {
-  console.log('data', data);
-},
-err => {
-  console.log('err', err);
-});
+  
   }
 }
